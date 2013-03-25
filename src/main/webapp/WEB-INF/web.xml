@@ -1,0 +1,60 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <session-config>
+    <!-- two weeks -->
+    <session-timeout>20160</session-timeout>
+  </session-config>
+	
+	<!-- Requires servlet api 2.4 or higher (tomcat 5.x is ok) 
+	See http://www.springframework.org/docs/reference/webintegration.html -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- This will cause Spring MVC to look for file /WEB-INF/spring-mvc-servlet.xml -->
+	<servlet>
+        <servlet-name>spring-mvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <!-- Allows us to serve up a favicon with the correct content type -->
+	<servlet>
+        <servlet-name>site-favicon</servlet-name>
+        <servlet-class>org.catamarancode.tomcat.servlet.SiteFaviconServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- This maps /static requests to the tomcat 'default' servlet specified in conf/web.xml which simply serves from the webapp file system -->
+    <!-- Note previously (before tomcat 6.30 or so) this mapped /static to the webapp root, so you need to use a path like this: 
+    		/static/images/sample.gif if the file is located in [webapp]/images/sample.gif
+ However, now it seems to work the way you'd expect (path /static/images/sample.gif maps to [webapp]/static/images/sample.gif).
+    -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/static/*</url-pattern>
+    </servlet-mapping>    
+
+	<!-- This defaults all requests (including *.json) to spring mvc --> 
+    <servlet-mapping>
+        <servlet-name>spring-mvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Allows us to serve up a favicon with the correct content type -->
+	<servlet-mapping>
+        <servlet-name>site-favicon</servlet-name>
+        <url-pattern>/favicon.ico</url-pattern>
+    </servlet-mapping>    
+    
+	<welcome-file-list>
+		<welcome-file>index</welcome-file>
+	</welcome-file-list>
+
+</web-app>

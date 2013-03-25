@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"  
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd ">
+	
+    <!-- Render server-side java exceptions to the browser and log files, with a unique reference code, and also optionally with a stack trace for easy troubleshooting -->
+    <bean id="exceptionResolver" class="com.scandilabs.framework.mvc.HtmlAndJsonExceptionResolver">
+        <property name="productionEnvironmentString" value="false"/>
+        <!-- defaults to errorView=error -->
+    </bean>
+    
+    <!-- Tells Spring MVC where to look for controller classes marked with an @Controller annotation -->
+	<context:component-scan base-package="myapp.web"/>
+	
+	<!-- Tells freemarker where to look for .FTL files -->
+	<bean id="freemarkerConfig"
+	 class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+	
+		<!-- Proper setting for loading templates form within the webapp --> 
+	    <property name="templateLoaderPath" value="/WEB-INF/freemarker-www/"/>
+	</bean>
+	
+	<!-- Tells Spring MVC to use freemarker to render views -->
+	<bean id="freemarkerViewResolver"
+	 class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+	    <property name="cache" value="true"/>
+	    <property name="prefix" value=""/>
+	    <property name="suffix" value=".ftl"/>
+	    <property name="exposeSpringMacroHelpers" value="true"/>
+	    <property name="requestContextAttribute"  value="requestContext" />
+	</bean>
+	
+	<!-- This tells Spring MVC to look up a specific view by name in the WEB-INF/views.xml file before consulting other viewResolvers -->
+    <bean name="xmlViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+    	<property name="order" value="0" />
+	</bean>
+	
+    <!-- Support declarative validation in Controller methods per JSR-303, see http://static.springsource.org/spring/docs/3.1.x/spring-framework-reference/html/validation.html#validation-mvc -->
+    <mvc:annotation-driven/>	
+
+</beans>
