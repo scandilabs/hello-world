@@ -31,14 +31,21 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!-- This maps /static requests to the tomcat 'default' servlet specified in conf/web.xml which simply serves from the webapp file system -->
-    <!-- Note previously (before tomcat 6.30 or so) this mapped /static to the webapp root, so you need to use a path like this: 
+    <!-- This maps /css, /js and /img requests to the tomcat 'default' servlet specified in conf/web.xml which simply serves from the webapp file system -->
+    <!-- Note that previous versions of Tomcat (before 6.30 or so) mapped /static to the webapp root, so you would need to use a path like this: 
     		/static/images/sample.gif if the file is located in [webapp]/images/sample.gif
- However, now it seems to work the way you'd expect (path /static/images/sample.gif maps to [webapp]/static/images/sample.gif).
     -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
-        <url-pattern>/static/*</url-pattern>
+        <url-pattern>/css/*</url-pattern>
+    </servlet-mapping>    
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/js/*</url-pattern>
+    </servlet-mapping>    
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/img/*</url-pattern>
     </servlet-mapping>    
 
 	<!-- This defaults all requests (including *.json) to spring mvc --> 

@@ -1,1 +1,11 @@
-target
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# eclipse #
+target/
+.settings/
+.classpath
+.project
+.DS_Store

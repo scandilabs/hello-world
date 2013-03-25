@@ -1,0 +1,52 @@
+body {
+	margin:0px;
+	font-family: arial,sans-serif;
+}
+
+p {
+    color:green;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.grey {
+	font-size: 0.9em;
+	color: #5E7185;
+}
+
+.successMessage {
+	color:blue;
+}
+
+.failureMessage {
+	color:red;
+}
+
+.fieldErrors {
+	color:red;
+}
+
+form label {
+    display:block; 
+    float:left; 
+    margin-right:5px; 
+    padding-top:4px; 
+    text-align:right; 
+    width:150px;
+}
+
+form div {
+    padding: 0.2em;
+}
+
+#bodyContent {
+	margin: 12px 12px;	
+}
+
+/* Autocomplete options */
+.ui-menu-item {
+	font-size:70%;
+}
+

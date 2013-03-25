@@ -3,9 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 <head>
+    <link type="text/css" rel="stylesheet" href="/css/global.css" media="screen, projection">
+    
     <title>Hello World from ScandiLabs Java</title>
 </head>
 <body>
-    <p>Hello world!</p>
+    <p>Hello world! <img src="/img/info-icon.png" /></p>
 </body>
 </html>

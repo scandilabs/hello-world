@@ -145,9 +145,11 @@ if [ "$COMMAND" == "build" ]; then
 
   # First remove old symlinks to static web content
   if [ -f $LOCAL_WEBAPP_DIR ]; then
-    echo "[manage.sh] Removing /static symlink from: $LOCAL_WEBAPP_DIR .."
-    rm $LOCAL_WEBAPP_DIR/WEB-INF/freemarker 2> /dev/null
-    rm $LOCAL_WEBAPP_DIR/static 2> /dev/null
+    echo "[manage.sh] Removing /css, /js and /img symlinks from: $LOCAL_WEBAPP_DIR .."
+    rm $LOCAL_WEBAPP_DIR/WEB-INF/freemarker-www 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/css 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/js 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/img 2> /dev/null
   fi  
 
   # Then build which will move files from src/ to target/
@@ -156,15 +158,19 @@ if [ "$COMMAND" == "build" ]; then
   
   # Remove newly copied static files from target/
   echo "[manage.sh] Removing web files from: $LOCAL_WEBAPP_DIR .."
-  rm -r $LOCAL_WEBAPP_DIR/WEB-INF/freemarker 2> /dev/null
-  rm -r $LOCAL_WEBAPP_DIR/static 2> /dev/null
+  rm -r $LOCAL_WEBAPP_DIR/WEB-INF/freemarker-www 2> /dev/null
+  rm -r $LOCAL_WEBAPP_DIR/css 2> /dev/null
+  rm -r $LOCAL_WEBAPP_DIR/js 2> /dev/null
+  rm -r $LOCAL_WEBAPP_DIR/img 2> /dev/null
 
   # Re-create the symlinks back to static files in the /src tree
   echo "[manage.sh] Creating symlinks from /target to static web content under /src .."
   cd $LOCAL_WEBAPP_DIR/WEB-INF/
-  ln -s $PROJECT_HOME/src/main/webapp/WEB-INF/freemarker/ freemarker
+  ln -s $PROJECT_HOME/src/main/webapp/WEB-INF/freemarker-www/ freemarker-www
   cd $LOCAL_WEBAPP_DIR
-  ln -s $PROJECT_HOME/src/main/webapp/static/ static
+  ln -s $PROJECT_HOME/src/main/webapp/css/ css
+  ln -s $PROJECT_HOME/src/main/webapp/js/ js
+  ln -s $PROJECT_HOME/src/main/webapp/img/ img
 
   # Create a symlink in tomcat/webapps back to project's target directory
   if [ ! -L $LOCAL_TOMCAT_WEBAPPS_DIR/$LOCAL_WEBAPP_NAME ]; then
@@ -186,8 +192,10 @@ if [ "$COMMAND" == "clean" ]; then
   # First remove old symlinks
   if [ -f $LOCAL_WEBAPP_DIR ]; then
     echo "[manage.sh] Removing symlinks from: $LOCAL_WEBAPP_DIR .."
-    rm $LOCAL_WEBAPP_DIR/WEB-INF/freemarker 2> /dev/null
-    rm $LOCAL_WEBAPP_DIR/static 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/WEB-INF/freemarker-www 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/css 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/js 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/img 2> /dev/null
   fi  
   
   # Remove symlink in tomcat/webapps back to project's target directory
@@ -247,8 +255,10 @@ if [ "$COMMAND" == "deploy" ]; then
   # First remove old symlinks
   if [ -f $LOCAL_WEBAPP_DIR ]; then
     echo "[manage.sh] Removing symlinks from: $LOCAL_WEBAPP_DIR .."
-    rm $LOCAL_WEBAPP_DIR/WEB-INF/freemarker 2> /dev/null
-    rm $LOCAL_WEBAPP_DIR/static 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/WEB-INF/freemarker-www 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/css 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/js 2> /dev/null
+    rm $LOCAL_WEBAPP_DIR/img 2> /dev/null
   fi  
 
   # Then build a war
