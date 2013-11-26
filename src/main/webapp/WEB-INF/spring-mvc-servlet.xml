@@ -11,7 +11,7 @@
     http://www.springframework.org/schema/context/spring-context.xsd ">
 	
     <!-- Render server-side java exceptions to the browser and log files, with a unique reference code, and also optionally with a stack trace for easy troubleshooting -->
-    <bean id="exceptionResolver" class="com.scandilabs.framework.mvc.HtmlAndJsonExceptionResolver">
+    <bean id="exceptionResolver" class="com.scandilabs.catamaran.mvc.HtmlAndJsonExceptionResolver">
         <property name="productionEnvironmentString" value="false"/>
         <!-- defaults to errorView=error -->
     </bean>

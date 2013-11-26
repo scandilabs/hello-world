@@ -4,12 +4,12 @@
 
 <beans>
 	
-	<bean name="json-string" class="com.scandilabs.framework.mvc.StringView">
+	<bean name="json-string" class="com.scandilabs.catamaran.mvc.StringView">
 	    <property name="contentType"><value>application/json</value></property>
 		<property name="enableDebugLog"><value>true</value></property>		
     </bean>
 	
-	<bean name="csv-string" class="com.scandilabs.framework.mvc.StringView">
+	<bean name="csv-string" class="com.scandilabs.catamaran.mvc.StringView">
 	    <property name="contentType"><value>text/csv</value></property>
     </bean>
 	

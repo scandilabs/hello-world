@@ -1,114 +1,57 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>my-group</groupId>
-  <artifactId>my-app</artifactId>
-  <packaging>war</packaging>
-  <version>1.0.0</version>
-  <name>A bare-bones web application from ScandiLabs Java</name>
-  <url>http://maven.apache.org</url>
-  
-  <dependencies>
-  
-    <dependency>
-      <groupId>com.scandilabs.framework</groupId>
-      <artifactId>scandilabs-mvc</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-	
-	<!-- TODO remove - implied from sl-mvc -->
-    <dependency>
-      <groupId>com.scandilabs.framework</groupId>
-      <artifactId>scandilabs-core</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-    
-    <!-- TODO: Move into sl-mvc -->
-    <dependency>
-        <groupId>servletapi</groupId>
-        <artifactId>servletapi</artifactId>
-        <version>2.4</version>
-        <scope>provided</scope>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.scandilabs.framework</groupId>
-      <artifactId>scandilabs-entity</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-	
-	<dependency>
-      <groupId>org.catamarancode</groupId>
-      <artifactId>catamaran-tomc</artifactId>
-      <version>1.1</version>
-	  <!-- jar should be manually copied to tomcat/lib -->
-	  <scope>provided</scope>
-    </dependency>
-	
-	<dependency>
-		<groupId>org.freemarker</groupId>
-		<artifactId>freemarker</artifactId>
-		<version>2.3.16</version>
-	</dependency>
-	
-	<dependency>
-      <groupId>net.sf.json-lib</groupId>
-      <artifactId>json-lib</artifactId>
-      <version>2.3</version>
-	  <classifier>jdk15</classifier>
-    </dependency>	
-    
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-	<dependency>
-		<groupId>org.slf4j</groupId>
-      	<artifactId>slf4j-api</artifactId>
-      	<version>1.5.8</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.5.8</version>
-    </dependency>	
-	<dependency>
-		<groupId>commons-lang</groupId>
-		<artifactId>commons-lang</artifactId>
-		<version>2.1</version>
-	</dependency>
-	<dependency>
-		<groupId>commons-logging</groupId>
-		<artifactId>commons-logging</artifactId>
-		<version>1.1</version>
-	</dependency>
-	<dependency>
-		<groupId>commons-codec</groupId>
-		<artifactId>commons-codec</artifactId>
-		<version>1.3</version>
-	</dependency>
-	<dependency>
-		<groupId>commons-io</groupId>
-		<artifactId>commons-io</artifactId>
-		<version>1.4</version>
-	</dependency>
-	
-  </dependencies>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.gearsay.com</groupId>
+	<artifactId>gersay-web</artifactId>
+	<packaging>war</packaging>
+	<version>1.0</version>
+	<name>A bare-bones web application from ScandiLabs Java</name>
+	<url>http://maven.apache.org</url>
 
-  <build>
-    <plugins>
-	  <plugin>
-	    <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-compiler-plugin</artifactId>
-	    <version>2.0.2</version>
-	    <configuration>
-	      <source>1.6</source>
-	      <target>1.6</target>
-	    </configuration>
-	  </plugin>
-	</plugins>
-  </build>
+	<dependencies>
+
+		<dependency>
+			<groupId>com.scandilabs</groupId>
+			<artifactId>catamaran</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.8</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
