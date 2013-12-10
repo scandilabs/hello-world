@@ -12,5 +12,9 @@
 	<bean name="csv-string" class="com.scandilabs.catamaran.mvc.StringView">
 	    <property name="contentType"><value>text/csv</value></property>
     </bean>
+    
+    <bean name="html" class="com.scandilabs.catamaran.mvc.StringView">
+        <property name="contentType"><value>text/html</value></property>
+    </bean>    
 	
 </beans>

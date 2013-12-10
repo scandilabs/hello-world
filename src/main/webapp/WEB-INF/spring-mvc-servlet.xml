@@ -23,7 +23,7 @@
 	<bean id="freemarkerConfig"
 	 class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 	
-		<!-- Proper setting for loading templates form within the webapp --> 
+		<!-- Proper setting for loading templates from within the webapp --> 
 	    <property name="templateLoaderPath" value="/WEB-INF/freemarker-www/"/>
 	</bean>
 	
@@ -44,5 +44,17 @@
 	
     <!-- Support declarative validation in Controller methods per JSR-303, see http://static.springsource.org/spring/docs/3.1.x/spring-framework-reference/html/validation.html#validation-mvc -->
     <mvc:annotation-driven/>	
+    
+    <!-- see http://blog.springsource.org/2009/12/21/mvc-simplifications-in-spring-3-0/ -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- <mvc:mapping path="/**/*.html" /> -->
+            <mvc:mapping path="/**" />
+            <bean
+                class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">
+                <property name="sessionFactory" ref="sessionFactory" />
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>    
 
 </beans>
