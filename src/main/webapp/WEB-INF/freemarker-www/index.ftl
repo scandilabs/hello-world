@@ -9,5 +9,14 @@
 </head>
 <body>
     <p>Hello world! <img src="/img/info-icon.png" /></p>
+    
+    <h3>Here is a list of users:</h3>
+    <ul>
+    <#list users as user>
+        <li>${user.userName!"n/a"} (${user.email})</li>
+    </#list>
+    </ul>
+    
+    <p>Create <a href="/create-user">one more</a> right now!</p>
 </body>
 </html>

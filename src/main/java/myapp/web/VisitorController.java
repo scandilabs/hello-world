@@ -1,7 +1,11 @@
 package myapp.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import myapp.entity.User;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +30,23 @@ public class VisitorController {
             HttpServletResponse response) throws Exception {
 
         ModelAndView mv = new ModelAndView("index");
+        
+        List<User> users = User.objects.all();
+        mv.addObject("users", users);
+        return mv;
+    }
+    
+    
+    @RequestMapping("/create-user")
+    public ModelAndView createUser() throws Exception {
+
+    	User user = new User();
+    	user.setActive(true);
+    	user.setEmail("mail@example.com");
+    	user.setUserName("userName");
+    	user.save();
+    	
+        ModelAndView mv = new ModelAndView("redirect:index");
         return mv;
     }
 
