@@ -6,6 +6,7 @@
 # java build files
 classes/
 lib/
+META-INF/
 
 # eclipse #
 target/
