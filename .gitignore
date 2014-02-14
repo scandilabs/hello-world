@@ -3,6 +3,10 @@
 *.war
 *.ear
 
+# java build files
+classes/
+lib/
+
 # eclipse #
 target/
 .settings/
